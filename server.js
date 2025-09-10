@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
-const connectDB = require('./config/database');
+const { initSupabase, testConnection } = require('./config/supabase');
 const errorHandler = require('./middleware/errorHandler');
 
 // Import routes (will create these files next)
@@ -17,8 +17,11 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to MongoDB
-connectDB();
+// Initialize Supabase
+const supabase = initSupabase();
+
+// Test database connection
+testConnection();
 
 // Security middleware
 app.use(helmet());

@@ -21,8 +21,8 @@ Adults 25-55 from Latino, Somali, South Asian, Mediterranean, Caribbean, and Mid
 
 ### Backend
 - **Runtime**: Node.js with Express.js
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT tokens with refresh token rotation
+- **Database**: PostgreSQL with Supabase (includes built-in authentication)
+- **Authentication**: Supabase Auth with JWT tokens
 - **AI Integration**: OpenAI GPT-4 for meal plan generation
 - **Payments**: Stripe for subscription management
 - **Email**: SendGrid for automated communications
@@ -37,7 +37,7 @@ Adults 25-55 from Latino, Somali, South Asian, Mediterranean, Caribbean, and Mid
 
 ### Prerequisites
 - Node.js >= 16.0.0
-- MongoDB (local or Atlas)
+- Supabase account (free tier available)
 - OpenAI API key
 - Stripe account (test mode)
 - SendGrid account
