@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3010';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://nutrivida-eno8.onrender.com';
 
 // Create axios instance with default config
 export const api = axios.create({
