@@ -144,4 +144,4 @@ MIT License - see LICENSE file for details.
 
 ## 🌟 Cultural Commitment
 
-NutriVida is committed to authentic representation of cultural foods and traditions. We work with cultural nutrition experts and community feedback to ensure our meal plans respect and honor diverse food heritage.
+NutriVida is committed to authentic representation of cultural foods and traditions. We work with cultural nutrition experts and community feedback to ensure our meal plans respect and honor diverse food heritage.# Trigger Vercel deployment
