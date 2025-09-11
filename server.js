@@ -29,7 +29,7 @@ testConnection();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3001',
+  origin: process.env.CLIENT_URL || ['http://localhost:3001', 'https://nutrivida-hazel.vercel.app', 'https://nutrivida-m23ml2s61-karre89s-projects.vercel.app'],
   credentials: true
 }));
 
