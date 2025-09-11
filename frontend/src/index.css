@@ -1,0 +1,332 @@
+/* Custom Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.flex { display: flex; }
+.block { display: block; }
+.hidden { display: none; }
+.grid { display: grid; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+.bg-white { background-color: white; }
+.bg-gray-50 { background-color: #f9fafb; }
+.bg-gray-900 { background-color: #111827; }
+
+.text-white { color: white; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-900 { color: #111827; }
+
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+.m-4 { margin: 1rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-16 { margin-bottom: 4rem; }
+
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+.border { border: 1px solid #d1d5db; }
+.border-2 { border: 2px solid #d1d5db; }
+
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.max-w-7xl { max-width: 80rem; margin: 0 auto; }
+.max-w-4xl { max-width: 56rem; margin: 0 auto; }
+.max-w-3xl { max-width: 48rem; margin: 0 auto; }
+.max-w-md { max-width: 28rem; margin: 0 auto; }
+
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.space-y-8 > * + * { margin-top: 2rem; }
+
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+.transition-all { transition: all 0.2s; }
+.transition-colors { transition: color 0.2s; }
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+  .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .md\\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .md\\:flex-row { flex-direction: row; }
+  .md\\:text-4xl { font-size: 2.25rem; }
+  .md\\:text-5xl { font-size: 3rem; }
+  .md\\:block { display: block; }
+  .md\\:hidden { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .lg\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .lg\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .lg\\:text-6xl { font-size: 3.75rem; }
+  .lg\\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, #ef6820, #f28a33);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 104, 32, 0.3);
+}
+
+.btn-secondary {
+  background: white;
+  color: #ef6820;
+  border: 2px solid #ef6820;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: #fef7ee;
+}
+
+.btn-cultural {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.btn-cultural:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom CSS Variables for cultural themes */
+:root {
+  --color-latino-primary: #f43f5e;
+  --color-latino-secondary: #fda4af;
+  --color-somali-primary: #0ea5e9;
+  --color-somali-secondary: #7dd3fc;
+  --color-mediterranean-primary: #22c55e;
+  --color-mediterranean-secondary: #86efac;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Cultural theme utilities */
+.theme-latino {
+  --theme-primary: var(--color-latino-primary);
+  --theme-secondary: var(--color-latino-secondary);
+}
+
+.theme-somali {
+  --theme-primary: var(--color-somali-primary);
+  --theme-secondary: var(--color-somali-secondary);
+}
+
+.theme-mediterranean {
+  --theme-primary: var(--color-mediterranean-primary);
+  --theme-secondary: var(--color-mediterranean-secondary);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+}
+
+/* Button base styles */
+.btn-base {
+  @apply font-medium rounded-lg transition-all duration-200 focus-ring;
+}
+
+.btn-primary {
+  @apply btn-base bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800;
+}
+
+.btn-secondary {
+  @apply btn-base bg-white text-primary-600 border border-primary-600 hover:bg-primary-50 active:bg-primary-100;
+}
+
+.btn-cultural {
+  @apply btn-base px-6 py-3 text-white font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300;
+}
+
+/* Cultural gradient backgrounds */
+.gradient-latino {
+  background: linear-gradient(135deg, #f43f5e, #fda4af);
+}
+
+.gradient-somali {
+  background: linear-gradient(135deg, #0ea5e9, #7dd3fc);
+}
+
+.gradient-mediterranean {
+  background: linear-gradient(135deg, #22c55e, #86efac);
+}
+
+.gradient-south-asian {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.gradient-caribbean {
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.gradient-middle-eastern {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+}
+
+/* Text gradient utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #ef6820, #f28a33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero section specific styles */
+.hero-bg {
+  background: linear-gradient(135deg, #fef7ee 0%, #fdebd3 100%);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #ef6820;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

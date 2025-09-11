@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - NutriVida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f9fafb;
+        }
+
+        .min-h-screen { min-height: 100vh; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-white { background-color: white; }
+        .max-w-7xl { max-width: 80rem; margin: 0 auto; }
+        .max-w-md { max-width: 28rem; margin: 0 auto; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .p-8 { padding: 2rem; }
+        .p-6 { padding: 1.5rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-sm { font-size: 0.875rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .text-gray-900 { color: #111827; }
+        .text-gray-800 { color: #1f2937; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-500 { color: #6b7280; }
+        .text-white { color: white; }
+        .text-orange-600 { color: #ea580c; }
+        .text-green-600 { color: #16a34a; }
+        .text-blue-600 { color: #2563eb; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .gap-6 { gap: 1.5rem; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .w-full { width: 100%; }
+        .w-8 { width: 2rem; }
+        .w-16 { width: 4rem; }
+        .h-8 { height: 2rem; }
+        .h-16 { height: 4rem; }
+        .border { border: 1px solid #d1d5db; }
+        .bg-orange-50 { background-color: #fff7ed; }
+        .bg-green-50 { background-color: #f0fdf4; }
+        .bg-blue-50 { background-color: #eff6ff; }
+        .bg-orange-100 { background-color: #fed7aa; }
+        .bg-green-100 { background-color: #dcfce7; }
+        .bg-blue-100 { background-color: #dbeafe; }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ef6820, #f28a33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #ef6820, #f28a33);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239, 104, 32, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #ef6820;
+            border: 2px solid #ef6820;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: #fff7ed;
+        }
+
+        /* Card styles */
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid #f3f4f6;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cultural theme gradients */
+        .gradient-latino { background: linear-gradient(135deg, #f43f5e, #fda4af); }
+        .gradient-somali { background: linear-gradient(135deg, #0ea5e9, #7dd3fc); }
+        .gradient-south-asian { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .gradient-mediterranean { background: linear-gradient(135deg, #22c55e, #86efac); }
+        .gradient-caribbean { background: linear-gradient(135deg, #10b981, #34d399); }
+        .gradient-middle-eastern { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-active {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-content">
+                <div class="logo">NutriVida</div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">Welcome back!</span>
+                    <button class="btn-secondary" onclick="goToLanding()">Home</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="py-8">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Welcome Section -->
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                        Welcome to Your <span id="culture-name">Cultural</span> Health Journey!
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Your personalized meal plan is being generated. Here's what's coming next in your health transformation.
+                    </p>
+                </div>
+
+                <!-- Status Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Quiz Complete -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Health Assessment</h3>
+                                <span class="status-badge status-active">Complete</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Cultural health quiz completed successfully</p>
+                    </div>
+
+                    <!-- Meal Plan Generation -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Meal Plan</h3>
+                                <span class="status-badge status-pending">Generating</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">AI is creating your personalized cultural meal plan</p>
+                    </div>
+
+                    <!-- Email Confirmation -->
+                    <div class="card p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Email Updates</h3>
+                                <span class="status-badge status-pending">Sending</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Check your inbox for detailed results</p>
+                    </div>
+                </div>
+
+                <!-- What's Next Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Main Content -->
+                    <div class="lg:col-span-2">
+                        <div class="card p-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">What's Next in Your Journey</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <span class="text-orange-600 font-semibold text-sm">1</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Receive Your Cultural Meal Plan</h3>
+                                        <p class="text-gray-600">Within the next 10 minutes, you'll receive a detailed 7-day meal plan featuring authentic <span id="culture-foods">cultural</span> foods optimized for your health goals.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <span class="text-orange-600 font-semibold text-sm">2</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Get Your Shopping List</h3>
+                                        <p class="text-gray-600">We'll provide a complete shopping list with all ingredients needed for your cultural meal plan, organized by store section.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <span class="text-orange-600 font-semibold text-sm">3</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Start Your 7-Day Blood Sugar Reset</h3>
+                                        <p class="text-gray-600">Begin your personalized program designed to stabilize blood sugar while enjoying the foods you love from your cultural heritage.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <span class="text-orange-600 font-semibold text-sm">4</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Track Your Progress</h3>
+                                        <p class="text-gray-600">Monitor your energy levels, mood, and health metrics as you follow your culturally-adapted nutrition plan.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 p-6 bg-orange-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">💡 Pro Tip</h3>
+                                <p class="text-gray-700">Start by reading through your meal plan and identifying 2-3 recipes that excite you most. These will be your gateway meals to building healthy habits while staying connected to your cultural roots.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="space-y-6">
+                        <!-- Cultural Heritage Card -->
+                        <div class="card p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Your Cultural Profile</h3>
+                            <div id="culture-card" class="gradient-latino p-4 rounded-lg text-white mb-4">
+                                <h4 class="font-semibold text-lg">Latino Heritage</h4>
+                                <p class="text-sm opacity-90">Authentic flavors, healthy approach</p>
+                            </div>
+                            <div class="space-y-2 text-sm text-gray-600">
+                                <div>✓ Health goal: <span id="primary-goal">Better blood sugar control</span></div>
+                                <div>✓ Cooking time: <span id="cooking-time">30-45 minutes</span></div>
+                                <div>✓ Family size: <span id="family-size">3-4 people</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="card p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                            <div class="space-y-3">
+                                <button class="btn-primary w-full" onclick="viewMealPlan()">
+                                    View Meal Plan
+                                </button>
+                                <button class="btn-primary w-full" onclick="upgradeToPaid()">
+                                    Unlock Full Plan - $19
+                                </button>
+                                <button class="btn-secondary w-full" onclick="takeAnotherQuiz()">
+                                    Take Another Quiz
+                                </button>
+                                <button class="btn-secondary w-full" onclick="goToLanding()">
+                                    Back to Home
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Support -->
+                        <div class="card p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Need Help?</h3>
+                            <p class="text-gray-600 text-sm mb-4">Our cultural nutrition experts are here to support your journey.</p>
+                            <button class="btn-secondary w-full text-sm">Contact Support</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Get user data from localStorage
+        const selectedCulture = localStorage.getItem('selectedCulture');
+        
+        // Culture display names and info
+        const cultureInfo = {
+            'latino': {
+                name: 'Latino',
+                displayName: 'Latino Heritage',
+                foods: 'Latino',
+                gradient: 'gradient-latino'
+            },
+            'somali': {
+                name: 'Somali',
+                displayName: 'Somali Heritage',
+                foods: 'Somali',
+                gradient: 'gradient-somali'
+            },
+            'south_asian': {
+                name: 'South Asian',
+                displayName: 'South Asian Heritage',
+                foods: 'South Asian',
+                gradient: 'gradient-south-asian'
+            },
+            'mediterranean': {
+                name: 'Mediterranean',
+                displayName: 'Mediterranean Heritage',
+                foods: 'Mediterranean',
+                gradient: 'gradient-mediterranean'
+            },
+            'caribbean': {
+                name: 'Caribbean',
+                displayName: 'Caribbean Heritage',
+                foods: 'Caribbean',
+                gradient: 'gradient-caribbean'
+            },
+            'middle_eastern': {
+                name: 'Middle Eastern',
+                displayName: 'Middle Eastern Heritage',
+                foods: 'Middle Eastern',
+                gradient: 'gradient-middle-eastern'
+            }
+        };
+
+        // Update page content based on selected culture
+        if (selectedCulture && cultureInfo[selectedCulture]) {
+            const culture = cultureInfo[selectedCulture];
+            
+            // Update culture-specific text
+            document.getElementById('culture-name').textContent = culture.name;
+            document.getElementById('culture-foods').textContent = culture.foods;
+            
+            // Update culture card
+            const cultureCard = document.getElementById('culture-card');
+            cultureCard.className = `${culture.gradient} p-4 rounded-lg text-white mb-4`;
+            cultureCard.innerHTML = `
+                <h4 class="font-semibold text-lg">${culture.displayName}</h4>
+                <p class="text-sm opacity-90">Authentic flavors, healthy approach</p>
+            `;
+        }
+
+        // Navigation functions
+        function goToLanding() {
+            window.location.href = './landing.html';
+        }
+
+        function viewMealPlan() {
+            window.location.href = './meal-plan.html';
+        }
+
+        function upgradeToPaid() {
+            window.location.href = './payment.html?product=blood-sugar-reset';
+        }
+
+        function takeAnotherQuiz() {
+            // Clear previous answers
+            localStorage.removeItem('selectedCulture');
+            window.location.href = './quiz.html';
+        }
+
+        // Simulate real-time updates
+        setTimeout(() => {
+            // Update meal plan status
+            const mealPlanStatus = document.querySelector('.status-pending');
+            if (mealPlanStatus) {
+                mealPlanStatus.className = 'status-badge status-active';
+                mealPlanStatus.textContent = 'Ready';
+            }
+        }, 5000);
+
+        // Show welcome message
+        console.log('Welcome to your NutriVida dashboard! Your cultural meal plan is being prepared.');
+    </script>
+</body>
+</html>

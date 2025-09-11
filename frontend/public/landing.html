@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriVida - Culture-First Health Plans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ef6820, #f28a33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #ef6820;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ef6820, #f28a33);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239, 104, 32, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #ef6820;
+            border: 2px solid #ef6820;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: #fef7ee;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fef7ee 0%, #fdebd3 100%);
+            padding: 8rem 0 4rem;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text .highlight {
+            background: linear-gradient(135deg, #ef6820, #f28a33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .culture-selector {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        
+        .culture-selector h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .culture-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .culture-option {
+            padding: 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        .culture-option:hover {
+            border-color: #ef6820;
+            background: #fef7ee;
+        }
+        
+        .culture-option.selected {
+            border-color: #ef6820;
+            background: #fef7ee;
+        }
+        
+        .culture-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .culture-foods {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: #f9fafb;
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ef6820;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        /* Cultural Cuisines */
+        .cuisines {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cuisine-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .cuisine-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .cuisine-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cuisine-header {
+            height: 120px;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: end;
+        }
+        
+        .cuisine-header h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .latino { background: linear-gradient(135deg, #f43f5e, #fda4af); }
+        .somali { background: linear-gradient(135deg, #0ea5e9, #7dd3fc); }
+        .south-asian { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .mediterranean { background: linear-gradient(135deg, #22c55e, #86efac); }
+        .caribbean { background: linear-gradient(135deg, #10b981, #34d399); }
+        .middle-eastern { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        
+        .cuisine-content {
+            padding: 1.5rem;
+        }
+        
+        .cuisine-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .ingredient-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ingredient-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: #f9fafb;
+            padding: 5rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .author-culture {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .author-result {
+            color: #ef6820;
+            font-weight: 500;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #fef7ee 0%, #fdebd3 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #ef6820;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-brand h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+        
+        .footer-section h5 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cuisine-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">NutriVida</div>
+                <div class="nav-links">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#cultures">Cultures</a>
+                    <a href="#testimonials">Stories</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#" class="btn-primary">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><span class="highlight">Culture-First</span><br>Health Plans That<br>Actually Work</h1>
+                    <p>Finally, a health platform that honors your cultural food traditions while optimizing for your wellness goals. AI-powered meal plans from Latino to Somali to South Asian cuisines.</p>
+                    <div class="hero-buttons">
+                        <a href="#quiz" class="btn-primary">Start Free Health Assessment</a>
+                        <a href="#demo" class="btn-secondary">Watch Demo (2 min)</a>
+                    </div>
+                    <div style="display: flex; gap: 2rem; font-size: 0.875rem; color: #666; margin-top: 1rem;">
+                        <span>✓ No credit card required</span>
+                        <span>✓ 7-day money-back guarantee</span>
+                    </div>
+                </div>
+                
+                <div class="culture-selector">
+                    <h3>Choose Your Culture</h3>
+                    <p style="text-center; color: #666; margin-bottom: 1.5rem;">Get personalized meal plans that honor your heritage</p>
+                    <div class="culture-options">
+                        <div class="culture-option" onclick="selectCulture(this)">
+                            <div class="culture-name">Latino & Hispanic</div>
+                            <div class="culture-foods">Black beans, Avocados, Cilantro</div>
+                        </div>
+                        <div class="culture-option" onclick="selectCulture(this)">
+                            <div class="culture-name">Somali & East African</div>
+                            <div class="culture-foods">Injera, Berbere spice, Lentils</div>
+                        </div>
+                        <div class="culture-option" onclick="selectCulture(this)">
+                            <div class="culture-name">South Asian</div>
+                            <div class="culture-foods">Turmeric, Basmati rice, Yogurt</div>
+                        </div>
+                        <div style="text-center; margin-top: 1rem; color: #666; font-size: 0.875rem;">
+                            + 3 more cultures available
+                        </div>
+                    </div>
+                    <button id="continue-btn" class="btn-primary" style="width: 100%; margin-top: 1.5rem; display: none;" onclick="startQuiz()">
+                        Continue to Health Assessment →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Cultural Cuisines</div>
+                </div>
+                <div>
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Report Better Health</div>
+                </div>
+                <div>
+                    <div class="stat-number">2.3M</div>
+                    <div class="stat-label">Meals Generated</div>
+                </div>
+                <div>
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">User Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Cuisines Section -->
+    <section class="cuisines" id="cultures">
+        <div class="container">
+            <h2 class="section-title">Authentic Cultural Cuisines</h2>
+            <p class="section-subtitle">Each meal plan is crafted by AI that understands traditional cooking methods, authentic ingredients, and cultural food patterns.</p>
+            
+            <div class="cuisine-grid">
+                <div class="cuisine-card">
+                    <div class="cuisine-header latino">
+                        <h3>Latino & Hispanic</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Authentic Mexican, Central & South American cuisines</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Black beans</span>
+                            <span class="ingredient-tag">Avocados</span>
+                            <span class="ingredient-tag">Cilantro</span>
+                            <span class="ingredient-tag">Lime</span>
+                            <span class="ingredient-tag">Cumin</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cuisine-card">
+                    <div class="cuisine-header somali">
+                        <h3>Somali & East African</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Traditional East African spices and cooking methods</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Injera</span>
+                            <span class="ingredient-tag">Berbere spice</span>
+                            <span class="ingredient-tag">Lentils</span>
+                            <span class="ingredient-tag">Dates</span>
+                            <span class="ingredient-tag">Tea</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cuisine-card">
+                    <div class="cuisine-header south-asian">
+                        <h3>South Asian</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Indian, Pakistani, Bengali & Sri Lankan traditions</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Turmeric</span>
+                            <span class="ingredient-tag">Basmati rice</span>
+                            <span class="ingredient-tag">Lentils</span>
+                            <span class="ingredient-tag">Yogurt</span>
+                            <span class="ingredient-tag">Ginger</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cuisine-card">
+                    <div class="cuisine-header mediterranean">
+                        <h3>Mediterranean</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Greek, Turkish, Lebanese & Italian wellness cuisine</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Olive oil</span>
+                            <span class="ingredient-tag">Tomatoes</span>
+                            <span class="ingredient-tag">Fish</span>
+                            <span class="ingredient-tag">Herbs</span>
+                            <span class="ingredient-tag">Legumes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cuisine-card">
+                    <div class="cuisine-header caribbean">
+                        <h3>Caribbean</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Island flavors from Jamaica, Cuba & Puerto Rico</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Plantains</span>
+                            <span class="ingredient-tag">Yuca</span>
+                            <span class="ingredient-tag">Tropical fruits</span>
+                            <span class="ingredient-tag">Fish</span>
+                            <span class="ingredient-tag">Coconut</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cuisine-card">
+                    <div class="cuisine-header middle-eastern">
+                        <h3>Middle Eastern</h3>
+                    </div>
+                    <div class="cuisine-content">
+                        <p>Persian, Lebanese, Turkish & Moroccan cuisine</p>
+                        <div class="ingredient-tags">
+                            <span class="ingredient-tag">Tahini</span>
+                            <span class="ingredient-tag">Dates</span>
+                            <span class="ingredient-tag">Bulgur</span>
+                            <span class="ingredient-tag">Nuts</span>
+                            <span class="ingredient-tag">Lamb</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Real Stories, Real Results</h2>
+            <p class="section-subtitle">See how NutriVida has helped people from diverse backgrounds achieve their health goals</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "Finally, a meal plan that understands my family's food traditions! My blood sugar is stable and I'm eating foods I actually love."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-name">Maria Rodriguez</div>
+                        <div class="author-culture">Latino Cuisine</div>
+                        <div class="author-result">Lost 15 lbs, A1C improved from 8.2 to 6.8</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "NutriVida included traditional Somali foods like injera and berbere spice in my meal plan. It feels like home while helping my health."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-name">Amina Hassan</div>
+                        <div class="author-culture">Somali Cuisine</div>
+                        <div class="author-result">Energy levels increased by 80%</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "The AI understood my South Asian background perfectly. Every meal includes turmeric, ginger, and foods my grandmother would approve of."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-name">Priya Patel</div>
+                        <div class="author-culture">South Asian Cuisine</div>
+                        <div class="author-result">Blood pressure normalized in 6 weeks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="quiz">
+        <div class="container">
+            <h2>Ready to Transform Your Health?</h2>
+            <p>Start with our free cultural health assessment. Get personalized recommendations based on your heritage and health goals.</p>
+            
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" class="email-input" placeholder="Enter your email" required>
+                <button type="submit" class="btn-primary">Start Free</button>
+            </form>
+            <p style="margin-top: 1rem; color: #666; font-size: 0.875rem;">
+                Free assessment • No spam • Unsubscribe anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>NutriVida</h4>
+                    <p>Culture-first health platform honoring your heritage while optimizing wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Platform</h5>
+                    <ul>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Cultures</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NutriVida. All rights reserved. Made with ❤️ for diverse communities.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedCulture = null;
+
+        function selectCulture(element) {
+            // Remove previous selection
+            document.querySelectorAll('.culture-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection to clicked element
+            element.classList.add('selected');
+            selectedCulture = element.querySelector('.culture-name').textContent;
+            
+            // Show continue button
+            document.getElementById('continue-btn').style.display = 'block';
+        }
+
+        function startQuiz() {
+            if (selectedCulture) {
+                // Store selected culture in localStorage so quiz can access it
+                localStorage.setItem('selectedCulture', selectedCulture);
+                // Navigate to the quiz page
+                window.location.href = './quiz.html';
+            }
+        }
+
+        function handleEmailSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            alert(`Thank you! We'll send health tips to ${email}. This would normally capture the lead in our system.`);
+            // In real implementation, this would send the email to our API
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

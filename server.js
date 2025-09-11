@@ -7,10 +7,13 @@ require('dotenv').config();
 const { initSupabase, testConnection } = require('./config/supabase');
 const errorHandler = require('./middleware/errorHandler');
 
-// Import routes (will create these files next)
-// const authRoutes = require('./routes/auth');
-// const userRoutes = require('./routes/users');
-// const mealPlanRoutes = require('./routes/mealplans');
+// Import routes
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const mealPlanRoutes = require('./routes/mealplans');
+const quizRoutes = require('./routes/quiz');
+const paymentRoutes = require('./routes/payments');
+const emailRoutes = require('./routes/emails');
 // const progressRoutes = require('./routes/progress');
 // const paymentRoutes = require('./routes/payments');
 
@@ -56,11 +59,13 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
-// app.use('/api/auth', authRoutes);
-// app.use('/api/users', userRoutes);
-// app.use('/api/mealplans', mealPlanRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/mealplans', mealPlanRoutes);
+app.use('/api/quiz', quizRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/emails', emailRoutes);
 // app.use('/api/progress', progressRoutes);
-// app.use('/api/payments', paymentRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
