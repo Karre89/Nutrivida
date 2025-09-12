@@ -210,7 +210,7 @@ class AIMealPlanService {
 
       // Generate meal plan using OpenAI
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
@@ -502,7 +502,7 @@ Provide the response in this exact JSON format:
 }`;
 
       const response = await this.openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",

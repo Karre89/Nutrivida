@@ -45,8 +45,12 @@ app.use(limiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Serve static files
+// Serve static files - React build files and public assets
 app.use(express.static('public'));
+app.use('/static', express.static('static'));
+app.use(express.static('.', { 
+  index: false // Don't serve index.html as default, let API routes handle first
+}));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -67,25 +71,22 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/emails', emailRoutes);
 // app.use('/api/progress', progressRoutes);
 
-// Basic route for testing
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'Welcome to NutriVida API',
-    version: '1.0.0',
-    description: 'Culture-first health platform providing AI-powered, culturally-adapted meal plans'
-  });
+// Serve React app for frontend routes (catch-all, must be after API routes)
+app.get('*', (req, res) => {
+  // Serve API response for /api routes
+  if (req.path.startsWith('/api') || req.path.startsWith('/health')) {
+    return res.status(404).json({ 
+      error: 'API endpoint not found',
+      path: req.originalUrl 
+    });
+  }
+  
+  // Serve React app for all other routes
+  res.sendFile('index.html', { root: __dirname });
 });
 
 // Error handling middleware (should be last)
 app.use(errorHandler);
-
-// Handle 404 errors
-app.use('*', (req, res) => {
-  res.status(404).json({ 
-    error: 'Endpoint not found',
-    path: req.originalUrl 
-  });
-});
 
 // Start server
 app.listen(PORT, () => {
